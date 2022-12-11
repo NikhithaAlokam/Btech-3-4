@@ -1,0 +1,30 @@
+ASSUME CS: CODE ,DS: DATA  
+
+
+DATA SEGMENT 
+    ARR DB 001H, 023H, 045H, 067H, 042H, 04BH, 012H, 0EFH   
+    N DW 08H
+    SUM DW 01 DUP (?)
+    DATA ENDS       
+
+
+CODE SEGMENT
+    START: 
+    MOV AX, @DATA
+    MOV DS, AX
+    MOV CX, N     
+    MOV AX, 0000H
+    MOV SI, OFFSET ARR     
+    ABC:         
+    MOV BL, [SI]
+    INC SI
+    ADD AX, BX
+    DEC CX
+    JNZ ABC
+    MOV SUM, AX
+    MOV AH, 4CH
+    INT 21H
+    CODE ENDS
+
+
+END START

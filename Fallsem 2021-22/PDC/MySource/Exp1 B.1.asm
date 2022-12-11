@@ -1,0 +1,4 @@
+MOV AX, 05H
+MOV BX, 03H
+SUB AX, BX  
+HLT
